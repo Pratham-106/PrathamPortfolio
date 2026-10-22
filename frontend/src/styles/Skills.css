@@ -1,0 +1,103 @@
+.skills {
+    padding: var(--section-padding) 0;
+    background: var(--bg-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.skill-card {
+    padding: 26px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--surface-color);
+    box-shadow: var(--shadow-sm);
+    transition: border-color var(--transition), box-shadow var(--transition),
+        transform var(--transition);
+}
+
+.skill-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.skill-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 23px;
+}
+
+.skill-group-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--primary-soft);
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+.skill-card-heading h3 {
+    font-size: 1.15rem;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--surface-secondary);
+    color: var(--text-color);
+    font-size: 0.87rem;
+    font-weight: 500;
+    transition: border-color var(--transition), color var(--transition),
+        background-color var(--transition);
+}
+
+.skill-item:hover {
+    border-color: var(--primary-color);
+    background: var(--primary-soft);
+    color: var(--primary-color);
+}
+
+.skill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+@media (max-width: 650px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .skill-card {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 380px) {
+    .skill-item {
+        padding: 8px 10px;
+        font-size: 0.82rem;
+    }
+}

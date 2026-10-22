@@ -1,0 +1,782 @@
+/* =========================================
+   SPIRIT CAT — FLOATING COMPANION
+========================================= */
+
+.game-companion {
+    --spirit-purple: #a855f7;
+    --spirit-purple-light: #d8b4fe;
+    --spirit-purple-dark: #6d28d9;
+
+    position: fixed;
+    right: 24px;
+    bottom: 22px;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    width: 150px;
+    font-family: inherit;
+    color: #f5edff;
+}
+
+/* Clickable character */
+
+.companion-character {
+    position: relative;
+    isolation: isolate;
+
+    display: grid;
+    place-items: center;
+
+    width: 125px;
+    height: 135px;
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    animation: spirit-float 3.2s ease-in-out infinite;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+.companion-character:hover {
+    transform: translateY(-5px) scale(1.045);
+    filter: brightness(1.12);
+}
+
+.companion-character:active {
+    transform: scale(0.94);
+}
+
+.companion-character:focus-visible {
+    outline: 2px solid var(--spirit-purple-light);
+    outline-offset: 5px;
+}
+
+/* Purple aura */
+
+.companion-aura {
+    position: absolute;
+    inset: 12px;
+
+    z-index: -1;
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+            rgba(168, 85, 247, 0.24) 0%,
+            rgba(109, 40, 217, 0.12) 42%,
+            transparent 72%);
+
+    filter: blur(5px);
+    animation: spirit-aura-pulse 2.8s ease-in-out infinite;
+}
+
+.companion-cat {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.spirit-cat-art {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+
+    animation: spirit-breathe 3.2s ease-in-out infinite;
+}
+
+/* =========================================
+   SPIRIT SVG PARTS
+========================================= */
+
+.spirit-ground-shadow {
+    fill: rgba(0, 0, 0, 0.4);
+    filter: blur(4px);
+
+    transform-origin: center;
+    animation: spirit-shadow 3.2s ease-in-out infinite;
+}
+
+.spirit-tail {
+    animation: spirit-tail-sway 3.5s ease-in-out infinite;
+    transform-origin: 135px 95px;
+}
+
+.spirit-tail-highlight {
+    opacity: 0.7;
+    animation: spirit-highlight 2.4s ease-in-out infinite;
+}
+
+.spirit-wisp {
+    fill: url(#spirit-belly);
+    opacity: 0.9;
+
+    animation: spirit-wisp-drift 3.2s ease-in-out infinite;
+}
+
+.spirit-ear {
+    fill: url(#spirit-fur);
+    stroke: rgba(192, 132, 252, 0.5);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+
+.spirit-inner-ear {
+    fill: #9b5de5;
+    opacity: 0.65;
+}
+
+.spirit-body {
+    fill: url(#spirit-fur);
+    stroke: rgba(192, 132, 252, 0.65);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+
+    filter: drop-shadow(0 0 7px rgba(168, 85, 247, 0.22));
+}
+
+.spirit-belly {
+    fill: url(#spirit-belly);
+    opacity: 0.75;
+}
+
+.spirit-face {
+    animation: spirit-face-glow 3s ease-in-out infinite;
+}
+
+.spirit-eye {
+    fill: #d8b4fe;
+    filter: drop-shadow(0 0 5px rgba(192, 132, 252, 0.9));
+}
+
+/* Cursor-following pupils */
+
+.spirit-pupil {
+    fill: #000000;
+    transition: transform 0.08s linear;
+    will-change: transform;
+}
+
+.spirit-nose {
+    fill: #e9d5ff;
+}
+
+.spirit-mouth {
+    fill: none;
+    stroke: #c084fc;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+}
+
+.spirit-cheek {
+    fill: #c084fc;
+    opacity: 0.65;
+}
+
+.spirit-paw {
+    fill: #281536;
+    stroke: rgba(192, 132, 252, 0.65);
+    stroke-width: 1.4;
+}
+
+/* =========================================
+   EVOLUTION EFFECTS
+========================================= */
+
+.spirit-magic {
+    fill: #d8b4fe;
+    animation: spirit-magic-twinkle 2s ease-in-out infinite;
+}
+
+.spirit-magic circle {
+    fill: #f3e8ff;
+}
+
+.spirit-void {
+    fill: #e9d5ff;
+    animation: spirit-void-glow 2s ease-in-out infinite alternate;
+}
+
+.spirit-crown {
+    fill: #a855f7;
+    stroke: #e9d5ff;
+    stroke-width: 1.4;
+    stroke-linejoin: round;
+}
+
+.spirit-crown-base {
+    fill: #7e22ce;
+    stroke: #e9d5ff;
+    stroke-width: 1;
+}
+
+.cat-level-2 .companion-aura {
+    background: radial-gradient(circle,
+            rgba(168, 85, 247, 0.34),
+            rgba(109, 40, 217, 0.13) 48%,
+            transparent 74%);
+}
+
+.cat-level-3 .companion-aura {
+    background: radial-gradient(circle,
+            rgba(192, 132, 252, 0.4),
+            rgba(126, 34, 206, 0.18) 48%,
+            transparent 76%);
+}
+
+.cat-level-3 .spirit-cat-art {
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.35));
+}
+
+/* =========================================
+   LEVEL BADGE AND CAPTION
+========================================= */
+
+.companion-level-badge {
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    z-index: 3;
+
+    padding: 5px 9px;
+
+    border: 1px solid rgba(216, 180, 254, 0.55);
+    border-radius: 999px;
+
+    background: rgba(25, 12, 39, 0.94);
+    color: #e9d5ff;
+
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.24);
+}
+
+.companion-caption {
+    display: block;
+    max-width: 150px;
+
+    color: #d8b4fe;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-align: center;
+
+    text-shadow: 0 0 12px rgba(168, 85, 247, 0.45);
+}
+
+.companion-click-hint {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+
+    padding: 5px 9px;
+    border: 1px solid rgba(192, 132, 252, 0.3);
+    border-radius: 999px;
+
+    background: rgba(22, 12, 33, 0.95);
+    color: #e9d5ff;
+
+    font-size: 0.65rem;
+    transform: translate(-50%, 5px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.companion-character:hover .companion-click-hint {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* =========================================
+   DIALOGUE PANEL
+========================================= */
+
+.companion-dialogue {
+    position: absolute;
+    right: 0;
+    bottom: 155px;
+
+    width: 285px;
+    max-width: calc(100vw - 32px);
+    max-height: min(70vh, 540px);
+    overflow-y: auto;
+
+    padding: 20px;
+
+    border: 1px solid rgba(168, 85, 247, 0.38);
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at top right,
+            rgba(126, 34, 206, 0.16),
+            transparent 48%),
+        rgba(17, 11, 27, 0.97);
+
+    color: #f5edff;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.42),
+        0 0 25px rgba(168, 85, 247, 0.12);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    animation: companion-dialogue-in 0.24s ease-out;
+}
+
+.companion-dialogue::after {
+    content: "";
+
+    position: absolute;
+    right: 28px;
+    bottom: -7px;
+
+    width: 13px;
+    height: 13px;
+
+    border-right: 1px solid rgba(168, 85, 247, 0.38);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.38);
+
+    background: #160d21;
+    transform: rotate(45deg);
+}
+
+.companion-close {
+    position: absolute;
+    top: 9px;
+    right: 11px;
+
+    display: grid;
+    place-items: center;
+
+    width: 29px;
+    height: 29px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: rgba(168, 85, 247, 0.12);
+    color: #e9d5ff;
+
+    font-size: 1.3rem;
+    line-height: 1;
+
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.companion-close:hover {
+    background: rgba(168, 85, 247, 0.3);
+    transform: rotate(90deg);
+}
+
+.companion-close:focus-visible,
+.companion-stats-toggle:focus-visible,
+.companion-reset-button:focus-visible {
+    outline: 2px solid #d8b4fe;
+    outline-offset: 3px;
+}
+
+.companion-dialogue-label {
+    display: block;
+    padding-right: 25px;
+    margin-bottom: 12px;
+
+    color: #d8b4fe;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.companion-message {
+    margin: 0 0 16px;
+
+    color: #f5edff;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   XP BAR
+========================================= */
+
+.companion-xp-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 8px;
+
+    color: #d8b4fe;
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.companion-xp-track {
+    width: 100%;
+    height: 9px;
+    overflow: hidden;
+
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.companion-xp-fill {
+    height: 100%;
+    min-width: 0;
+
+    border-radius: inherit;
+
+    background: linear-gradient(90deg,
+            #7e22ce,
+            #a855f7,
+            #e9d5ff);
+
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.55);
+    transition: width 0.4s ease;
+}
+
+/* =========================================
+   ACHIEVEMENTS
+========================================= */
+
+.companion-stats-toggle {
+    width: 100%;
+    margin-top: 15px;
+    padding: 9px 12px;
+
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 10px;
+
+    background: rgba(168, 85, 247, 0.1);
+    color: #e9d5ff;
+
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.companion-stats-toggle:hover {
+    border-color: rgba(192, 132, 252, 0.65);
+    background: rgba(168, 85, 247, 0.2);
+}
+
+.companion-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    margin-top: 14px;
+    padding-top: 13px;
+
+    border-top: 1px solid rgba(192, 132, 252, 0.18);
+
+    animation: companion-stats-in 0.2s ease-out;
+}
+
+.companion-stats p {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+
+    margin: 0;
+
+    color: #e9d5ff;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   RESET ADVENTURE BUTTON
+========================================= */
+
+.companion-reset-button {
+    width: 100%;
+    margin-top: 7px;
+    padding: 10px 14px;
+
+    border: 1px solid rgba(192, 132, 252, 0.42);
+    border-radius: 10px;
+
+    background: rgba(168, 85, 247, 0.1);
+    color: #d8b4fe;
+
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.companion-reset-button:hover {
+    border-color: #c084fc;
+    background: rgba(168, 85, 247, 0.22);
+    transform: translateY(-2px);
+}
+
+.companion-reset-button:active {
+    transform: scale(0.98);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes spirit-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@keyframes spirit-breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.025);
+    }
+}
+
+@keyframes spirit-shadow {
+
+    0%,
+    100% {
+        transform: scaleX(1);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scaleX(0.78);
+        opacity: 0.22;
+    }
+}
+
+@keyframes spirit-aura-pulse {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(0.96);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes spirit-tail-sway {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes spirit-highlight {
+
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes spirit-wisp-drift {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(3px);
+    }
+}
+
+@keyframes spirit-face-glow {
+
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.15);
+    }
+}
+
+@keyframes spirit-magic-twinkle {
+
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes spirit-void-glow {
+    from {
+        opacity: 0.65;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes companion-dialogue-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes companion-stats-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT
+========================================= */
+
+@media (max-width: 600px) {
+    .game-companion {
+        right: 10px;
+        bottom: 12px;
+        width: 112px;
+    }
+
+    .companion-character {
+        width: 105px;
+        height: 115px;
+    }
+
+    .companion-dialogue {
+        right: -2px;
+        bottom: 132px;
+
+        width: min(285px, calc(100vw - 24px));
+        padding: 17px;
+    }
+
+    .companion-level-badge {
+        right: -1px;
+        bottom: 12px;
+    }
+
+    .companion-caption {
+        max-width: 112px;
+        font-size: 0.7rem;
+    }
+
+    .companion-click-hint {
+        display: none;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .companion-character,
+    .spirit-cat-art,
+    .companion-aura,
+    .spirit-ground-shadow,
+    .spirit-tail,
+    .spirit-tail-highlight,
+    .spirit-wisp,
+    .spirit-face,
+    .spirit-magic,
+    .spirit-void {
+        animation: none !important;
+    }
+
+    .companion-character,
+    .spirit-pupil,
+    .companion-xp-fill,
+    .companion-close,
+    .companion-stats-toggle,
+    .companion-reset-button {
+        transition: none !important;
+    }
+}

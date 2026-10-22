@@ -1,0 +1,325 @@
+/* ========== HERO SECTION ========== */
+
+.hero {
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    align-items: center;
+    padding: 72px 0;
+    overflow: hidden;
+    background: var(--bg-color);
+}
+
+.hero-content {
+    width: min(90%, var(--container-width));
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 64px);
+}
+
+/* ========== HERO TEXT ========== */
+
+.hero-text {
+    min-width: 0;
+}
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    color: var(--muted-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--success-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--success-color) 15%, transparent);
+}
+
+.hero-text h1 {
+    max-width: 700px;
+    margin-bottom: 24px;
+    color: var(--heading-color);
+    font-size: clamp(2.6rem, 4.6vw, 4.25rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.055em;
+    overflow-wrap: break-word;
+}
+
+.hero-text h1 span {
+    color: var(--primary-color);
+}
+
+.hero-description {
+    max-width: 570px;
+    margin-bottom: 30px;
+    color: var(--muted-text);
+    font-size: 1.05rem;
+    line-height: 1.9;
+}
+
+/* ========== HERO BUTTONS ========== */
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.hero-actions .btn {
+    gap: 9px;
+    white-space: nowrap;
+}
+
+.hero-actions .btn svg {
+    flex-shrink: 0;
+}
+
+/* ========== SOCIAL LINKS ========== */
+
+.hero-socials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+}
+
+.hero-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background: var(--surface-color);
+    color: var(--muted-text);
+    font-size: 1.05rem;
+}
+
+.hero-socials a:hover {
+    border-color: var(--primary-color);
+    background: var(--primary-soft);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.hero-socials>span {
+    color: var(--muted-text);
+    font-size: 0.85rem;
+}
+
+/* ========== VISUAL CARD ========== */
+
+.hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    width: 100%;
+}
+
+.visual-card {
+    width: 100%;
+    max-width: 440px;
+    min-width: 0;
+    padding: clamp(22px, 3vw, 30px);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--surface-secondary);
+    box-shadow: var(--shadow-lg);
+    overflow-wrap: break-word;
+}
+
+.visual-dots {
+    display: flex;
+    gap: 7px;
+    margin-bottom: 30px;
+}
+
+.visual-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-color);
+}
+
+.visual-dots span:first-child {
+    background: #f87171;
+}
+
+.visual-dots span:nth-child(2) {
+    background: #fbbf24;
+}
+
+.visual-dots span:nth-child(3) {
+    background: #4ade80;
+}
+
+.visual-label {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+}
+
+.visual-card h2 {
+    margin-bottom: 16px;
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    line-height: 1.35;
+    letter-spacing: -0.035em;
+}
+
+.visual-text {
+    margin-bottom: 24px;
+    color: var(--text-color);
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-weight: 650;
+    line-height: 1.55;
+    letter-spacing: -0.025em;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 24px;
+}
+
+.tech-tags span {
+    padding: 7px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 7px;
+    background: var(--surface-color);
+    color: var(--text-color);
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.visual-line {
+    height: 1px;
+    margin-bottom: 17px;
+    background: var(--border-color);
+}
+
+.visual-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted-text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.visual-footer span:last-child {
+    color: var(--primary-color);
+}
+
+/* ========== TABLET ========== */
+
+@media (max-width: 900px) {
+    .hero {
+        min-height: auto;
+        padding: 76px 0;
+    }
+
+    .hero-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 48px;
+    }
+
+    .hero-text h1 {
+        max-width: 700px;
+        font-size: clamp(2.8rem, 7vw, 4rem);
+    }
+
+    .hero-description {
+        max-width: 650px;
+    }
+
+    .hero-visual {
+        justify-content: flex-start;
+    }
+
+    .visual-card {
+        max-width: 560px;
+    }
+}
+
+/* ========== MOBILE ========== */
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 56px 0;
+    }
+
+    .hero-content {
+        width: 90%;
+        gap: 36px;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.77rem;
+    }
+
+    .hero-text h1 {
+        font-size: clamp(2.35rem, 10vw, 3rem);
+        line-height: 1.13;
+    }
+
+    .hero-description {
+        font-size: 0.96rem;
+        line-height: 1.8;
+    }
+
+    .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .hero-socials {
+        gap: 11px;
+    }
+
+    .hero-socials>span {
+        font-size: 0.78rem;
+    }
+
+    .visual-card {
+        padding: 22px;
+    }
+
+    .visual-dots {
+        margin-bottom: 25px;
+    }
+
+    .visual-card h2 {
+        font-size: 1.35rem;
+    }
+
+    .visual-text {
+        font-size: 1.15rem;
+    }
+}

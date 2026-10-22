@@ -1,0 +1,49 @@
+:root {
+    --spotlight-x: 50vw;
+    --spotlight-y: 30vh;
+}
+
+/* The spotlight is decorative and never intercepts clicks. */
+:root::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(420px circle at var(--spotlight-x) var(--spotlight-y),
+            rgb(59 130 246 / 7%),
+            rgb(139 92 246 / 3%) 42%,
+            transparent 72%);
+    transition: opacity 250ms ease;
+}
+
+:root.cursor-spotlight-active::before {
+    opacity: 1;
+}
+
+/*
+  Keep existing site content above the decorative overlay.
+  The overlay has pointer-events:none, so buttons and links still work.
+*/
+body {
+    position: relative;
+    isolation: isolate;
+}
+
+body>#root {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    :root::before {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root::before {
+        transition: none;
+    }
+}
