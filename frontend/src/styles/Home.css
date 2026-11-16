@@ -107,6 +107,7 @@
     background: var(--surface-color);
     color: var(--muted-text);
     font-size: 1.05rem;
+    transition: all 0.3s ease;
 }
 
 .hero-socials a:hover {
@@ -121,7 +122,7 @@
     font-size: 0.85rem;
 }
 
-/* ========== VISUAL CARD ========== */
+/* ========== HERO PHOTO ========== */
 
 .hero-visual {
     display: flex;
@@ -131,111 +132,66 @@
     width: 100%;
 }
 
-.visual-card {
+.hero-photo-frame {
+    position: relative;
     width: 100%;
     max-width: 440px;
-    min-width: 0;
-    padding: clamp(22px, 3vw, 30px);
+    aspect-ratio: 4 / 5;
     overflow: hidden;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    background: var(--surface-secondary);
-    box-shadow: var(--shadow-lg);
-    overflow-wrap: break-word;
+
+    border: 1px solid rgba(96, 165, 250, 0.35);
+    border-radius: 24px;
+
+    background: #111827;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 35px rgba(96, 165, 250, 0.12);
 }
 
-.visual-dots {
+.hero-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    transition: transform 0.4s ease;
+}
+
+.hero-photo-frame:hover .hero-photo {
+    transform: scale(1.035);
+}
+
+/* ========== PHOTO CAPTION ========== */
+
+.photo-caption {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+
     display: flex;
-    gap: 7px;
-    margin-bottom: 30px;
-}
-
-.visual-dots span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--border-color);
-}
-
-.visual-dots span:first-child {
-    background: #f87171;
-}
-
-.visual-dots span:nth-child(2) {
-    background: #fbbf24;
-}
-
-.visual-dots span:nth-child(3) {
-    background: #4ade80;
-}
-
-.visual-label {
-    margin-bottom: 10px;
-    color: var(--primary-color);
-    font-size: 0.78rem;
-    font-weight: 750;
-    letter-spacing: 0.12em;
-}
-
-.visual-card h2 {
-    margin-bottom: 16px;
-    color: var(--heading-color);
-    font-size: 1.5rem;
-    line-height: 1.35;
-    letter-spacing: -0.035em;
-}
-
-.visual-text {
-    margin-bottom: 24px;
-    color: var(--text-color);
-    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-    font-weight: 650;
-    line-height: 1.55;
-    letter-spacing: -0.025em;
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-    margin-bottom: 24px;
-}
-
-.tech-tags span {
-    padding: 7px 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 7px;
-    background: var(--surface-color);
-    color: var(--text-color);
-    font-size: 0.78rem;
-    font-weight: 500;
-}
-
-.visual-line {
-    height: 1px;
-    margin-bottom: 17px;
-    background: var(--border-color);
-}
-
-.visual-footer {
-    display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
     gap: 10px;
-    color: var(--muted-text);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-}
 
-.visual-footer span:last-child {
-    color: var(--primary-color);
+    padding: 13px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+
+    background: rgba(11, 18, 32, 0.82);
+    backdrop-filter: blur(12px);
+
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 /* ========== TABLET ========== */
 
 @media (max-width: 900px) {
+
     .hero {
         min-height: auto;
         padding: 76px 0;
@@ -256,17 +212,18 @@
     }
 
     .hero-visual {
-        justify-content: flex-start;
+        justify-content: center;
     }
 
-    .visual-card {
-        max-width: 560px;
+    .hero-photo-frame {
+        max-width: 400px;
     }
 }
 
 /* ========== MOBILE ========== */
 
 @media (max-width: 480px) {
+
     .hero {
         padding: 56px 0;
     }
@@ -307,19 +264,20 @@
         font-size: 0.78rem;
     }
 
-    .visual-card {
-        padding: 22px;
+    .hero-visual {
+        margin-top: 0;
     }
 
-    .visual-dots {
-        margin-bottom: 25px;
+    .hero-photo-frame {
+        max-width: 320px;
+        border-radius: 20px;
     }
 
-    .visual-card h2 {
-        font-size: 1.35rem;
-    }
-
-    .visual-text {
-        font-size: 1.15rem;
+    .photo-caption {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        padding: 11px 13px;
+        font-size: 10px;
     }
 }

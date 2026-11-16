@@ -5,6 +5,7 @@ import {
   FaLinkedinIn,
   FaDownload,
 } from "react-icons/fa";
+
 import "../styles/Home.css";
 
 const Home = () => {
@@ -12,7 +13,10 @@ const Home = () => {
     <main>
       <section className="hero" id="home">
         <div className="hero-content">
+
+          {/* Left Side - Introduction */}
           <div className="hero-text">
+
             <p className="hero-eyebrow">
               <span className="status-dot" />
               OPEN TO JOBS &amp; INTERNSHIPS
@@ -31,6 +35,7 @@ const Home = () => {
             </p>
 
             <div className="hero-actions">
+
               <a href="#projects" className="btn btn-primary">
                 Explore My Work <FaArrowRight />
               </a>
@@ -42,9 +47,12 @@ const Home = () => {
               >
                 Download Resume <FaDownload />
               </a>
+
             </div>
 
+            {/* Social Links */}
             <div className="hero-socials">
+
               <a
                 href="https://github.com/Pratham-106"
                 target="_blank"
@@ -66,41 +74,30 @@ const Home = () => {
               </a>
 
               <span>Building. Learning. Improving.</span>
+
             </div>
           </div>
 
-          <div className="hero-visual" aria-hidden="true">
-            <div className="visual-card">
-              <div className="visual-dots">
-                <span />
-                <span />
-                <span />
+          {/* Right Side - Profile Photo */}
+          <div className="hero-visual">
+
+            <div className="hero-photo-frame">
+
+              <img
+                src="/pratham-photo.png"
+                alt="Pratham Survase - MERN Stack Developer"
+                className="hero-photo"
+              />
+
+              <div className="photo-caption">
+                <span className="status-dot" />
+                MERN STACK DEVELOPER
               </div>
 
-              <p className="visual-label">CURRENTLY BUILDING</p>
-
-              <h2>Ideas into reality.</h2>
-
-              <p className="visual-text">
-                Full-stack development · Problem solving · Continuous
-                learning
-              </p>
-
-              <div className="tech-tags">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>Express</span>
-                <span>MongoDB</span>
-              </div>
-
-              <div className="visual-line" />
-
-              <div className="visual-footer">
-                <span>PORTFOLIO / 2026</span>
-                <span>01 — 04</span>
-              </div>
             </div>
+
           </div>
+
         </div>
       </section>
     </main>
